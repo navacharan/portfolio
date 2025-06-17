@@ -12,9 +12,6 @@ st.set_page_config(
 
 # --- Helper Function for Local Files ---
 def get_base64_of_bin_file(bin_file):
-    """
-    Converts a local file to base64 for embedding (useful for images or PDFs).
-    """
     with open(bin_file, 'rb') as f:
         data = f.read()
     return base64.b64encode(data).decode()
@@ -26,150 +23,124 @@ EMAIL = "navacharangrandhi@gmail.com"
 PHONE = "6300868164"
 LINKEDIN_URL = "https://www.linkedin.com/in/grandhi-venkata-nava-charan-5405b3210/"
 GITHUB_URL = "https://github.com/navacharan"
-PROFILE_PIC = "https://via.placeholder.com/150" # Replace with your actual profile picture URL!
-RESUME_PDF_PATH = "Navacharan.pdf" # Make sure this PDF exists in the same directory!
+RESUME_PDF_PATH = "Navacharan.pdf"
 
 # --- Custom CSS for Styling ---
 def local_css(file_name):
-    """Loads custom CSS from a local file."""
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 try:
-    local_css("style.css") # Ensure 'style.css' is in the same directory
+    local_css("style.css")
 except FileNotFoundError:
     st.warning("`style.css` not found. Some custom styling may not be applied. Please create the `style.css` file as instructed.")
 
 # --- Navigation ---
-st.sidebar.title("Navigate Through My Portfolio")
-# Reordered navigation for a more logical flow
-page = st.sidebar.radio("",
-    ("About Me", "Education", "Skills", "Work Experience", "Projects", "Certifications", "Contact")
+st.sidebar.image(r"C:\Users\navac\Downloads\RAJ_0081-.jpg", width=200)
+st.sidebar.title("Portfolio Navigation")
+page = st.sidebar.radio("📂 Menu",
+    [
+        "👤 About Me",
+        "🎓 Education",
+        "🛠️ Skills",
+        "💼 Work Experience",
+        "📁 Projects",
+        "📜 Certifications",
+        "📬 Contact"
+    ],
+    label_visibility="visible"
 )
 
 # --- Page Content ---
-if page == "About Me":
-    # --- HEADER SECTION ---
-
+if page == "👤 About Me":
     st.title(f"Hi, I'm {NAME}! 👋")
     st.write(f"## {PROFESSION_ROLE}")
+    with st.container():
+        st.markdown("## 👨‍💻 About Me")
+        st.markdown("""
+Hi, I'm **Venkata Nava Charan Grandhi** — a dedicated software engineer and AI/ML enthusiast committed to transforming complex challenges into impactful, real-world solutions.
 
-    st.write(
-        "A passionate **Software Engineer** with a strong focus on **AI/ML**. "
-        "I excel at developing innovative solutions, from **image-based disease detection** "
-        "using CNNs to applying NLP for **sentiment analysis**. "
-        "I'm eager to leverage my expertise in **Python, deep learning, and related technologies** "
-        "to contribute to impactful AI/ML solutions, actively engaging in **research, model development, and optimization**."
-    )
+With practical experience in **Java Full Stack Development** and AI/ML domains like **pneumonia detection** and **paddy disease classification**, I blend curiosity, technical expertise, and a deep desire to learn into everything I build.
 
-    st.markdown("---") # Separator
-    st.subheader("Connect with Me:")
-    st.markdown(f"- **Email:** [{EMAIL}](mailto:{EMAIL})")
-    st.markdown(f"- **Phone:** {PHONE}")
+🔍 **What drives me:**
+- Building clean, efficient, and meaningful software  
+- Exploring data to uncover valuable insights  
+- Solving real problems with purposeful technology  
 
-    st.markdown(
-        f'<div class="about-links">'
-        f'<a href="{LINKEDIN_URL}" target="_blank">LinkedIn</a>'
-        f'<a href="{GITHUB_URL}" target="_blank">GitHub</a>'
-    , unsafe_allow_html=True)
+💡 I believe in continuous learning, collaborative development, and staying ahead of the curve in this rapidly evolving tech world.
 
-    if Path(RESUME_PDF_PATH).exists():
-        st.markdown(
-            f'<a href="data:application/pdf;base64,{get_base64_of_bin_file(RESUME_PDF_PATH)}" download="Venkata_Charan_Grandhi_Resume.pdf" target="_blank">Download Resume</a>'
-        , unsafe_allow_html=True)
+When I’m not coding, I enjoy diving into emerging tools, engaging in virtual internships, and exploring new opportunities to sharpen my skills and grow as a developer.
+""")
 
-    st.markdown('</div>', unsafe_allow_html=True) # Close the 'about-links' div
+    
 
-
-elif page == "Skills":
-    # --- SKILLS SECTION ---
+elif page == "🛠️ Skills":
     st.markdown("---")
     st.header("My Core Skills")
 
-    # Grouping skills for better readability
-    st.subheader("Programming Languages")
-    st.markdown("""
-        - Python (Proficient)
-        - Java
-        - HTML
-        - SQL
-    """)
+    col1, col2 = st.columns(2)
 
-    st.subheader("AI/ML & Deep Learning")
-    st.markdown("""
-        - Machine Learning Algorithms (e.g., SVM, Regression, Classification)
-        - Deep Learning Architectures (CNNs, RNNs)
-        - Natural Language Processing (NLP)
-        - Computer Vision
-        - Data Preprocessing & Feature Engineering
-        - Model Evaluation & Optimization
-    """)
+    with col1:
+        st.subheader("Programming Languages 🧑‍💻")
+        st.markdown("""
+        - ![Python](https://img.icons8.com/color/24/000000/python--v1.png) Python (Proficient)  
+        - ![Java](https://img.icons8.com/color/24/000000/java-coffee-cup-logo--v1.png) Java  
+        - ![HTML](https://img.icons8.com/color/24/000000/html-5--v1.png) HTML  
+        - ![SQL](https://img.icons8.com/color/24/000000/sql.png) SQL
+        """)
 
-    st.subheader("Frameworks & Libraries")
-    st.markdown("""
-        - Scikit-learn
-        - TensorFlow
-        - Keras
-        - PyTorch (familiarity)
-        - Matplotlib, Seaborn (Data Visualization)
-    """)
+        st.subheader("Frameworks & Libraries 📚")
+        st.markdown("""
+        - Scikit-learn  
+        - TensorFlow  
+        - Keras  
+        - PyTorch (familiarity)  
+        - Matplotlib, Seaborn
+        """)
 
-    st.subheader("Tools & Platforms")
-    st.markdown("""
-        - Git, GitHub (Version Control)
-        - Streamlit (Web App Development)
-        - Jupyter Notebooks (Interactive Development)
-    """)
-
-    st.subheader("Concepts")
-    st.markdown("""
-        - Data Structures
-        - Algorithms
+        st.subheader("Concepts")
+        st.markdown(""" 
         - Object-Oriented Programming (OOP)
-    """)
-    
-    # --- Skills Visualization ---
-    st.markdown("---")
-    st.subheader("Skill Proficiency")
-    skill_data = {
-        "Python": 90, "Java": 80, "SQL": 80,
-        "TensorFlow": 75, "Keras": 70, "Scikit-learn": 85,
-        "PyTorch": 60, "Matplotlib": 70, "Git": 85
-    }
-    skills = list(skill_data.keys())
-    proficiency = list(skill_data.values())
-    st.bar_chart(
-        {"Skill": skills, "Proficiency": proficiency},
-        x="Skill",
-        y="Proficiency",
-        x_label="Skill Name", # Added label
-        y_label="Proficiency Level (%)" # Added label
-    )
+        """)
+
+    with col2:
+        st.subheader("AI/ML & Deep Learning 🤖")
+        st.markdown("""
+        - Machine Learning Algorithms (SVM, Regression, Classification)  
+        - Deep Learning (CNNs, RNNs)  
+        - Natural Language Processing (NLP)  
+        - Computer Vision  
+        - Data Preprocessing & Feature Engineering  
+        - Model Evaluation & Optimization
+        """)
+
+        st.subheader("Tools & Platforms 🛠️")
+        st.markdown("""
+        - Git  
+        - GitHub  
+        - Streamlit  
+        - Jupyter Notebooks
+        """)
 
 
-elif page == "Education":
-    # --- EDUCATION SECTION ---
+elif page == "🎓 Education":
     st.markdown("---")
     st.header("Education")
-    st.subheader("B.Tech in Computer Science and Engineering")
+    st.subheader("🎓 B.Tech in Computer Science and Engineering")
     st.write("**Kalasalingam Academy of Research and Education**")
     st.write("*April 2020 - May 2024* | **CGPA: 8.1**")
-    st.write("") # Keep for spacing for visual separation
 
-    st.subheader("Intermediate (MPC)")
+    st.subheader("🏫 Intermediate (MPC)")
     st.write("**Vignana Bharathi Junior College**")
     st.write("*June 2018 - June 2020* | **CGPA: 8.2**")
 
-
-elif page == "Work Experience":
-    # --- WORK EXPERIENCE SECTION ---
+elif page == "💼 Work Experience":
     st.markdown("---")
-    st.header("Work Experience")
+    st.header("💼 Work Experience")
     st.subheader("Software Engineer Trainee")
     st.write("**Lyros Technologies Private Limited** | Hyderabad")
     st.write("*February 2025 - Present*")
-    st.markdown(
-        """
+    st.markdown("""
         - Actively participating in a structured training program focused on **Artificial Intelligence and Machine Learning (AI/ML)**, gaining hands-on experience with cutting-edge technologies.
         - **Assisted in data collection, cleaning, and structuring datasets** for AI/ML training and analysis, ensuring data integrity for project success.
         - **Supported in designing, training, and evaluating machine learning models**, conducting performance testing, and suggesting improvements for accuracy and efficiency.
@@ -177,92 +148,161 @@ elif page == "Work Experience":
         - Engaged in **research and experimentation**, staying updated with the latest AI/ML advancements and contributing to innovative solutions.
         - Developed **basic scripts to automate repetitive tasks** and improve AI development workflows.
         - **Maintained clear and concise documentation** of AI/ML experiments, model performance, and project progress.
-        - **Collaborated closely with experienced industry professionals and mentors** to enhance technical skills, problem-solving abilities, and overall professional competencies in the dynamic field of AI/ML.
-        """
-    )
+        - **Collaborated closely with experienced industry professionals and mentors** to enhance technical skills, problem-solving abilities, and overall professional competencies in the dynamic field of AI/ML
+    """)
 
-
-elif page == "Projects":
-    # --- PROJECTS SECTION ---
+elif page == "📁 Projects":
     st.markdown("---")
     st.header("Projects Showcase")
-
-    # --- Project Type Filter ---
     project_types = ["Academic", "Personal", "Professional"]
     selected_type = st.selectbox("Select Project Type", project_types)
 
     if selected_type == "Personal":
-        st.subheader("Bank Management System")
-        st.write("A console-based **Bank Management System** developed using **Java**.")
-        st.write("This project provides basic functionalities like creating accounts, depositing/w*ithdrawing funds, checking balances, and viewing transaction history. It demonstrates strong understanding of **Object-Oriented Programming (OOP)** principles and **data structures** for managing bank records effectively.")
-        # Add a GitHub link if available: st.markdown("[View on GitHub](YOUR_GITHUB_LINK_HERE)")
-        st.markdown("---")
+        with st.expander("💻 Bank Management System"):
+            st.markdown("""
+            **Objective:** To build a basic bank system that handles account operations using object-oriented programming.
+
+            **Overview:** Java-based console application managing deposits, withdrawals, and transaction history.
+
+            **Features:**
+            - Account creation & management
+            - Balance inquiry
+            - Transaction logs
+            - User-friendly interface for CLI operations
+            - Efficient handling of invalid entries and exceptions
+            """)
 
     elif selected_type == "Professional":
-        st.subheader("Student Grading System")
-        st.write("Developed a comprehensive **Student Grading System** as part of my training at **Lyros Technologies Private Limited**, utilizing **Python** and **SQL** for database management.")
-        st.write("This system streamlines the process of managing student grades, attendance, and performance reports. It features functionalities for adding/removing students, updating grades, calculating GPA, and generating performance summaries. This project enhanced my practical skills in **backend development** and **database interaction**.")
-        # Add a GitHub link or project demo link if available: st.markdown("[View on GitHub](YOUR_GITHUB_LINK_HERE)")
-        st.markdown("---")
+        with st.expander("📊 Student Grading System"):
+            st.markdown("""
+            **Objective:** To automate student performance tracking within the training team.
+
+            **Overview:** Python and SQL-powered system for recording grades and attendance.
+
+            **Features:**
+            - Grade entry interface
+            - Analytics for performance tracking
+            - Admin and student portals
+            - Dynamic reports generation
+            - Visual dashboards for insights
+            - Export functionality for grade reports
+            - Integration with email notifications
+            """)
+            st.markdown("#### 📸 Sample Output")
+            st.image(r"C:\Users\navac\OneDrive\Pictures\Screenshots\Screenshot 2025-06-12 170601.png", caption="Student grading system- Streamlit App Output")
+
+        with st.expander("🚗 Used Car Price Calculator"):
+            st.markdown("""
+            **Objective:** To predict the price of a used car based on its features.
+
+            **Overview:** A user-friendly Streamlit app that estimates the value of a car using multiple parameters like year, mileage, model, and drivetrain.
+
+            **Tech Stack:** Streamlit, Python
+
+            **Features:**
+            - Interactive form for input
+            - Price prediction using regression
+            - JSON-style result display for transparency
+            """)
+
+            st.markdown("#### 📸 Sample Output")
+            st.image(r"C:\Users\navac\OneDrive\Pictures\Screenshots\Screenshot 2025-06-12 162056.png", caption="Used Car Price Calculator - Streamlit App Output")
+
+            st.markdown("#### 🎯 Example Price Estimation:")
+            year = st.number_input("Year", min_value=1900, max_value=2025, value=2001)
+            mileage = st.number_input("Mileage", min_value=0, max_value=1000000, value=86132)
+            predicted_price = 10000 - (year - 2000) * 500 - mileage * 0.1
+            st.success(f"Predicted Price: ${predicted_price:.2f}")
 
     elif selected_type == "Academic":
-        st.subheader("Paddy Crop Disease Detection Using SVM and CNN")
-        st.success(
-            """
-            Developed a robust system for **automated paddy crop disease detection** by combining **Support Vector Machines (SVM)**
-            and **Convolutional Neural Networks (CNN)**. This solution precisely analyzes images of paddy leaves
-            to identify common diseases like blast, brown spot, and leaf smut, enabling farmers to take
-            **early intervention measures** and significantly **improve crop yield**. This project showcased
-            my ability to apply advanced machine learning techniques to real-world agricultural challenges.
-            """
-        )
-        # Add a GitHub link if available: st.markdown("[View on GitHub](YOUR_GITHUB_LINK_HERE)")
-        st.markdown("---") # Separator between academic projects
+        with st.expander("🌾 Paddy Crop Disease Detection"):
+            st.markdown("""
+            **Objective:** Early detection of crop disease using image processing techniques.
 
-        st.subheader("Pneumonia Detection Using Chest X-ray")
-        st.success(
-            """
-            Engineered an advanced **deep learning model leveraging CNNs** for the **accurate identification of pneumonia**
-            from chest X-ray images, facilitating **prompt and precise diagnosis**. The project involved
-            implementing sophisticated **data augmentation and preprocessing methods** to enhance model
-            generalization capabilities and maximize diagnostic efficiency. This demonstrates my proficiency
-            in medical image analysis and deep learning for critical applications.
-            """
-        )
-        # Add a GitHub link if available: st.markdown("[View on GitHub](YOUR_GITHUB_LINK_HERE)")
-        st.markdown("---") # Separator between academic projects
+            **Overview:** CNN and SVM used for classifying infected rice leaves from custom datasets.
 
-        st.subheader("Restaurant Review Sentiment Analysis")
-        st.success(
-            """
-            Developed a comprehensive **restaurant review analysis system** utilizing **Natural Language Processing (NLP)**
-            techniques to accurately analyze and classify customer sentiments. This system provides valuable insights
-            that enhance decision-making for both diners and restaurant owners. I employed **advanced text processing
-            algorithms** to extract key insights from unstructured review data, ultimately optimizing user experience and satisfaction.
-            """
-        )
-        # Add a GitHub link if available: st.markdown("[View on GitHub](YOUR_GITHUB_LINK_HERE)")
+            **Tech Stack:** OpenCV, TensorFlow, Streamlit
+
+            **Highlights:**
+            - Achieved over 90% accuracy
+            - Streamlit app with disease prediction results
+            - Real-time detection and classification
+            - User feedback-based iterative model improvement
+            """)
+
+        with st.expander("🩺 Pneumonia Detection from X-ray"):
+            st.markdown("""
+            **Objective:** To assist diagnosis through chest X-ray image classification using deep learning.
+
+            **Overview:** CNN model with Flask backend serving inference for uploaded X-ray images.
+
+            **Tech Stack:** Flask, TensorFlow, Keras
+
+            **Features:**
+            - Real-time classification with diagnostic output
+            - Simple frontend for X-ray upload
+            - Evaluation using precision-recall metrics
+            - ROC analysis and threshold tuning
+            """)
+            st.markdown("#### Sample Chest X-ray Input")
+            st.image(r"C:\Users\navac\python\pythonk\PROJECTS\pneumonnia\data\PNEUMONIA1\person257_virus_538.jpeg", caption="X-ray Sample")
+
+            st.markdown("#### Model Output:")
+            st.success("Prediction: **Pneumonia Detected**")
+
+            st.markdown("#### Model Accuracy:")
+            st.metric(label="Accuracy", value="93.7%")
+
+        with st.expander("🗣️ Sentiment Analysis of Reviews"):
+            st.markdown("""
+            **Objective:** Predict the sentiment of restaurant reviews using NLP.
+
+            **Overview:** Preprocessing of user reviews with sentiment classification using multiple models.
+
+            **Tools Used:** NLTK, Scikit-learn, Streamlit
+
+            **Features:**
+            - TF-IDF vectorization
+            - Multi-model evaluation
+            - Interactive GUI for review input
+            - Model comparison and error visualization
+            """)
+
+elif page == "📜 Certifications":
+    with st.container():
+        st.subheader("📜 Certifications")
+
+        st.markdown("""
+        ### ✅ JAVA FULL STACK DEVELOPMENT  
+        **Duration:** *May 2024 – Dec 2024*  
+        - Hands-on training in full-stack development using **Java, Spring Boot, Hibernate**.  
+        - Built dynamic web apps with **REST APIs, JSP/Servlets**, and frontend tech like **HTML, CSS, JavaScript**.  
+        - Practiced **Agile development**, version control (Git), and deployment strategies.  
+
+        ---
+
+        ### ✅ AI-900: Microsoft Azure AI Fundamentals  
+        **Year:** *2023*  
+        - Microsoft-certified foundational course in **AI and Machine Learning** concepts.  
+        - Explored **Computer Vision, NLP**, and Azure Cognitive Services.  
+        - Learned how to **train, test, and deploy AI models** on Microsoft Azure.  
+        - Studied **responsible AI** and ethical guidelines.
+
+        ---
+
+        ### ✅ Process Mining Virtual Internship  
+        **Duration:** *Jul 2022 – Sep 2022*  
+        - Interned virtually with exposure to **process mining techniques** using tools like **Celonis**.  
+        - Extracted event logs, analyzed bottlenecks, and optimized workflows.  
+        - Developed an understanding of **data-driven decision making** and business process improvement.  
+        """)
 
 
-elif page == "Certifications":
-    # --- CERTIFICATIONS SECTION ---
-    st.markdown("---")
-    st.header("Certifications")
-    st.markdown(
-        """
-        - **PROCESS MINING VIRTUAL INTERNSHIP** *(July 2022 - September 2022)*
-        - **JAVA FULL STACK DEVELOPMENT** *(May 2024 - December 2024)*
-        - **AI-900: MICROSOFT AZURE AI FUNDAMENTALS**
-        """
-    )
-
-elif page == "Contact":
-    # --- CONTACT SECTION ---
+elif page == "📬 Contact":
     st.markdown("---")
     st.header("Get In Touch!")
-    st.write("Feel free to reach out if you have any questions, want to discuss a project, or just want to connect. I'm always open to new opportunities and collaborations!")
+    st.write("I'm always open to connecting — feel free to reach out!")
 
-    # Formsubmit.co is used here for a simple contact form.
     contact_form = f"""
     <form action="https://formsubmit.co/{EMAIL}" method="POST">
         <input type="hidden" name="_captcha" value="false">
@@ -273,16 +313,18 @@ elif page == "Contact":
     </form>
     """
     st.markdown(contact_form, unsafe_allow_html=True)
+
     st.write("---")
-    st.write("You can also connect with me directly via:")
-    st.markdown(f"- **Email:** [{EMAIL}](mailto:{EMAIL})")
-    st.markdown(f"- **Phone:** {PHONE}")
-    st.markdown(f"- **LinkedIn:** [My LinkedIn Profile]({LINKEDIN_URL})")
-    st.markdown(f"- **GitHub:** [My GitHub Profile]({GITHUB_URL})")
+    st.markdown("### 📬 Connect with me:")
+    st.markdown(f"- 📧 **Email:** [{EMAIL}](mailto:{EMAIL})")
+    st.markdown(f"- 📱 **Phone:** {PHONE}")
+    st.markdown(f"- ![LinkedIn](https://img.icons8.com/ios-filled/20/0e76a8/linkedin.png) [LinkedIn]({LINKEDIN_URL})")
+    st.markdown(f"- ![GitHub](https://img.icons8.com/ios-glyphs/20/000000/github.png) [GitHub]({GITHUB_URL})")
+    if Path(RESUME_PDF_PATH).exists():
+        st.markdown(
+            f'<a href="data:application/pdf;base64,{get_base64_of_bin_file(RESUME_PDF_PATH)}" download="Venkata_Charan_Grandhi_Resume.pdf" target="_blank">📄 Download Resume</a>',
+            unsafe_allow_html=True
+        )
 
-else:
-    st.write("Please select a page from the navigation menu to explore my portfolio.")
-
-# --- Footer ---
 st.markdown("---")
 st.markdown(f"<p style='text-align: center; color: #888; font-size: 0.8em;'>© 2025 {NAME}. All rights reserved. Built with Streamlit.</p>", unsafe_allow_html=True)

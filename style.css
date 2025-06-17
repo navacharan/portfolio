@@ -2,27 +2,23 @@
 
 html, body, [class*="css"] {
     font-family: 'Roboto', sans-serif;
-    color: #333;
+    color: #eee;
+    background-color: #121212;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #0056b3; /* Darker blue for headings */
+    color: #90caf9;
 }
 
-/* Target the sidebar */
 .st-emotion-cache-1pxazr7 {
-    background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient sidebar */
-    color: white;
+    background: linear-gradient(135deg, #2196f3, #1976d2);
+    color: #fff;
     padding: 20px;
 }
 
-.st-emotion-cache-1pxazr7 h1, .st-emotion-cache-1pxazr7 h2, .st-emotion-cache-1pxazr7 h3 {
-    color: white; /* White text in sidebar */
-}
-
 .stButton > button {
-    background-color: #007bff;
-    color: white;
+    background-color: #2196f3;
+    color: #fff;
     border-radius: 5px;
     padding: 10px 20px;
     border: none;
@@ -30,64 +26,43 @@ h1, h2, h3, h4, h5, h6 {
     transition: background-color 0.3s ease;
 }
 .stButton > button:hover {
-    background-color: #0056b3;
+    background-color: #1976d2;
 }
 
 .stRadio > label {
     font-weight: bold;
-    color: #007bff;
+    color: #90caf9;
 }
 
-/* Custom card-like styling for sections */
-.section-container {
-    background-color: #f9f9f9; /* Light gray background */
-    padding: 30px;
+.section-container, .project-item, .experience-item, .education-item, .certification-item {
+    background-color: #212121;
+    padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    border-left: 5px solid #007bff; /* Accent border */
-}
-
-body {
-    background-color: #e6f7ff; /* Light blue background for the whole app */
-}
-
-.project-item, .experience-item, .education-item, .certification-item {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #eee;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid #90caf9;
 }
 
 .project-item h3, .experience-item h3, .education-item h3, .certification-item h3 {
-    color: #007bff;
     margin-top: 0;
+    color: #90caf9;
 }
 
-.project-item p, .experience-item p, .education-item p, .certification-item p {
-    font-size: 0.95em;
-    line-height: 1.6;
-}
-
-/* For the contact form */
 .stMarkdown form input, .stMarkdown form textarea {
     border: 1px solid #ddd;
     padding: 12px;
     border-radius: 6px;
     margin-bottom: 15px;
     width: 100%;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
+
 .stMarkdown form button {
-    width: auto;
-    padding: 12px 25px;
-    background-color: #28a745; /* Green for send button */
+    background-color: #28a745;
     color: white;
     border: none;
+    padding: 12px 25px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 .stMarkdown form button:hover {
     background-color: #218838;
@@ -107,48 +82,10 @@ body {
 
 .social-links a {
     margin-right: 15px;
-    color: #007bff;
+    color: #90caf9;
     text-decoration: none;
     font-weight: 500;
 }
 .social-links a:hover {
-    text-decoration: underline;
-}
-
-.stRadio div[role="radiogroup"] {
-    padding: 10px 0;
-}
-
-.stRadio div[role="radiogroup"] label {
-    padding: 8px 12px;
-    margin: 5px 0;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.stRadio div[role="radiogroup"] label:hover {
-    background-color: #e6f7ff;
-}
-
-.stRadio div[role="radiogroup"] input:checked + div {
-    background-color: #cceeff; /* Light blue for selected radio option */
-    font-weight: bold;
-    color: #0056b3;
-}
-
-/* Style for links in the About Me section */
-.about-links {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.about-links a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.about-links a:hover {
     text-decoration: underline;
 }
