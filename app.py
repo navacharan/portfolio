@@ -189,7 +189,7 @@ elif page == "📁 Projects":
             - Integration with email notifications
             """)
             st.markdown("#### 📸 Sample Output")
-            st.image(r"C:\Users\navac\OneDrive\Pictures\Screenshots\Screenshot 2025-06-12 170601.png", caption="Student grading system- Streamlit App Output")
+            st.image("Screenshot 2025-06-12 170601.png", caption="Student grading system- Streamlit App Output")
 
         with st.expander("🚗 Used Car Price Calculator"):
             st.markdown("""
@@ -206,7 +206,7 @@ elif page == "📁 Projects":
             """)
 
             st.markdown("#### 📸 Sample Output")
-            st.image(r"C:\Users\navac\OneDrive\Pictures\Screenshots\Screenshot 2025-06-12 162056.png", caption="Used Car Price Calculator - Streamlit App Output")
+            st.image("Screenshot 2025-06-12 162056.png", caption="Used Car Price Calculator - Streamlit App Output")
 
             st.markdown("#### 🎯 Example Price Estimation:")
             year = st.number_input("Year", min_value=1900, max_value=2025, value=2001)
@@ -245,7 +245,7 @@ elif page == "📁 Projects":
             - ROC analysis and threshold tuning
             """)
             st.markdown("#### Sample Chest X-ray Input")
-            st.image(r"C:\Users\navac\python\pythonk\PROJECTS\pneumonnia\data\PNEUMONIA1\person257_virus_538.jpeg", caption="X-ray Sample")
+            st.image("person260_bacteria_1222.jpeg", caption="X-ray Sample")
 
             st.markdown("#### Model Output:")
             st.success("Prediction: **Pneumonia Detected**")
