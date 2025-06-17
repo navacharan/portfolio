@@ -36,7 +36,7 @@ except FileNotFoundError:
     st.warning("`style.css` not found. Some custom styling may not be applied. Please create the `style.css` file as instructed.")
 
 # --- Navigation ---
-st.sidebar.image(r"C:\Users\navac\Downloads\RAJ_0081-.jpg", width=200)
+st.sidebar.image("RAJ_0081-.jpg", width=200)
 st.sidebar.title("Portfolio Navigation")
 page = st.sidebar.radio("📂 Menu",
     [
